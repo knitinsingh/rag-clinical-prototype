@@ -43,16 +43,16 @@ We use sample text inspired by the **MIMIC clinical dataset** (Medical Informati
 
 ```mermaid
 flowchart LR
-    A[Text files (.txt)] --> B[Chunking]
-    B --> C[Ollama Embeddings<br/>nomic-embed-text]
-    C --> D[Chroma Vector Store]
-    E[User Question] --> F[Embedding Query]
-    F --> D
-    D --> G[Top-k Relevant Chunks]
-    G --> H[LLM Answer<br/>(OpenAI or Ollama)]
-    H --> I[Final Response to Physician]
+  A[Text files (.txt)] --> B[Chunking]
+  B --> C[Ollama embeddings (nomic-embed-text)]
+  C --> D[Chroma vector store]
+  E[User question] --> F[Embed query]
+  F --> D
+  D --> G[Top-k relevant chunks]
+  G --> H[LLM answer (OpenAI or Ollama)]
+  H --> I[Final response to physician]
 
-
+## Setup 
 # 1) Python environment
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -68,7 +68,14 @@ ollama pull nomic-embed-text
 # 4) OpenAI key (public LLM)
 export OPENAI_API_KEY="sk-xxxxxxxx"
 
+# Build the index (embeds & stores chunks)
+python rag_cli.py --rebuild
 
+# Ask questions (OpenAI for answers)
+python rag_cli.py --provider openai
+
+# Or fully local answering (optional)
+python rag_cli.py --provider ollama --model llama3.2
 
 # Build the index (embeds & stores chunks)
 python rag_cli.py --rebuild
@@ -79,11 +86,3 @@ python rag_cli.py --provider openai
 # Or fully local answering (optional)
 python rag_cli.py --provider ollama --model llama3.2
 
-
-## Example Q&A
-
-Q: Which lung had the cavitary lesions on the chest CT?
-A: The left lung had the cavitary lesions on the chest CT.
-
-Q: What did the head CT show?
-A: The head CT showed no acute intracranial hemorrhage or mass effect, but it indicated old infarctions.
