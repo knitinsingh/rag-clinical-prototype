@@ -41,16 +41,15 @@ We use sample text inspired by the **MIMIC clinical dataset** (Medical Informati
 
 ## 🔄 Architecture
 
-```mermaid
 flowchart LR
-  A[Text files (.txt)] --> B[Chunking]
-  B --> C[Ollama embeddings (nomic-embed-text)]
+  A[Text files] --> B[Chunking]
+  B --> C[Embeddings]
   C --> D[Chroma vector store]
-  E[User question] --> F[Embed query]
-  F --> D
+  E[User question] --> D
   D --> G[Top-k relevant chunks]
-  G --> H[LLM answer (OpenAI or Ollama)]
-  H --> I[Final response to physician]
+  G --> H[LLM answer]
+  H --> I[Final response]
+
 
 ## Setup 
 # 1) Python environment
