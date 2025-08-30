@@ -41,6 +41,7 @@ We use sample text inspired by the **MIMIC clinical dataset** (Medical Informati
 
 ## 🔄 Architecture
 
+```mermaid
 flowchart LR
   A[Text files] --> B[Chunking]
   B --> C[Embeddings]
