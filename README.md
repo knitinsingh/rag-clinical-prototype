@@ -31,9 +31,9 @@ We use sample text inspired by the **MIMIC clinical dataset** (Medical Informati
 
 ## 🛠️ Stack
 - **Chunking**: Simple sliding window  
-- **Vector store**: Chroma (cosine similarity)  
+- **Vector Store**: Chroma (cosine similarity)  
 - **Embeddings**: Ollama `nomic-embed-text`  
-- **LLM for answering**:  
+- **LLM for Answering**:  
   - Default: OpenAI (`gpt-4o-mini`) – public API  
   - Optional: Ollama local model (`llama3.2`)  
 
@@ -52,38 +52,44 @@ flowchart LR
   H --> I[Final response]
 ```
 
-
-## Setup 
-### 1) Python environment
+## Setup
+1) Create Python Environment
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-### 2) Add at least 3 text files
+2) Add Text Files
 mkdir -p data
-### copy your .txt files into ./data
+Copy at least 3 `.txt` files into ./data
 
-### 3) Start Ollama (for embeddings)
+3) Start Ollama (for embeddings)
 ollama serve
 ollama pull nomic-embed-text
 
-### 4) OpenAI key (public LLM)
+4) Set OpenAI API Key
 export OPENAI_API_KEY="sk-xxxxxxxx"
 
-### Build the index (embeds & stores chunks)
+## 🚀 Running the RAG Bot
+Build the Index (embeds & stores chunks)
 python rag_cli.py --rebuild
 
-### Ask questions (OpenAI for answers)
+Ask Questions (using OpenAI)
 python rag_cli.py --provider openai
 
-### Or fully local answering (optional)
+Fully Local Answering (using Ollama)
 python rag_cli.py --provider ollama --model llama3.2
 
-### Build the index (embeds & stores chunks)
-python rag_cli.py --rebuild
+## Tools and Models Used
 
-### Ask questions (OpenAI for answers)
-python rag_cli.py --provider openai
+ChromaDB – Vector store
+Ollama nomic-embed-text – Embeddings
+OpenAI GPT Models – Cloud LLMs
+Ollama LLaMA 3.2 – Local LLM
 
-### Or fully local answering (optional)
-python rag_cli.py --provider ollama --model llama3.2
+## Estimated Time Spent
+
+Environment setup & dependencies: ~20 minutes
+Implementing RAG pipeline (indexing, retrieval, answering): ~1.5 hours
+Testing & validation: ~40 minutes
+Total: ~2.5 hours
+
 
