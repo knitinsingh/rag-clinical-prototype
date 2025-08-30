@@ -52,36 +52,36 @@ flowchart LR
 
 
 ## Setup 
-# 1) Python environment
+### 1) Python environment
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 2) Add at least 3 text files
+### 2) Add at least 3 text files
 mkdir -p data
-# copy your .txt files into ./data
+### copy your .txt files into ./data
 
-# 3) Start Ollama (for embeddings)
+### 3) Start Ollama (for embeddings)
 ollama serve
 ollama pull nomic-embed-text
 
-# 4) OpenAI key (public LLM)
+### 4) OpenAI key (public LLM)
 export OPENAI_API_KEY="sk-xxxxxxxx"
 
-# Build the index (embeds & stores chunks)
+### Build the index (embeds & stores chunks)
 python rag_cli.py --rebuild
 
-# Ask questions (OpenAI for answers)
+### Ask questions (OpenAI for answers)
 python rag_cli.py --provider openai
 
-# Or fully local answering (optional)
+### Or fully local answering (optional)
 python rag_cli.py --provider ollama --model llama3.2
 
-# Build the index (embeds & stores chunks)
+### Build the index (embeds & stores chunks)
 python rag_cli.py --rebuild
 
-# Ask questions (OpenAI for answers)
+### Ask questions (OpenAI for answers)
 python rag_cli.py --provider openai
 
-# Or fully local answering (optional)
+### Or fully local answering (optional)
 python rag_cli.py --provider ollama --model llama3.2
 
