@@ -1,0 +1,6 @@
+chromadb
+sentence-transformers
+requests
+rich
+python-dotenv
+openai>=1.40.0
