@@ -69,27 +69,27 @@ ollama pull nomic-embed-text
 export OPENAI_API_KEY="sk-xxxxxxxx"
 
 ## 🚀 Running the RAG Bot
-Build the Index (embeds & stores chunks)
+1) Build the Index (embeds & stores chunks)
 python rag_cli.py --rebuild
 
-Ask Questions (using OpenAI)
+2) Ask Questions (using OpenAI)
 python rag_cli.py --provider openai
 
-Fully Local Answering (using Ollama)
+3) Fully Local Answering (using Ollama)
 python rag_cli.py --provider ollama --model llama3.2
 
 ## Tools and Models Used
 
-ChromaDB – Vector store
-Ollama nomic-embed-text – Embeddings
-OpenAI GPT Models – Cloud LLMs
-Ollama LLaMA 3.2 – Local LLM
+- ChromaDB – Vector store
+- Ollama nomic-embed-text – Embeddings
+- OpenAI GPT Models – Cloud LLMs
+- Ollama LLaMA 3.2 – Local LLM
+
 
 ## Estimated Time Spent
-
-Environment setup & dependencies: ~20 minutes
-Implementing RAG pipeline (indexing, retrieval, answering): ~1.5 hours
-Testing & validation: ~40 minutes
-Total: ~2.5 hours
+- Environment setup & dependencies: ~20 minutes
+- Implementing RAG pipeline (indexing, retrieval, answering): ~1.5 hours
+- Testing & validation: ~40 minutes
+- Total: ~2.5 hours
 
 
