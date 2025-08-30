@@ -50,6 +50,7 @@ flowchart LR
   D --> G[Top-k relevant chunks]
   G --> H[LLM answer]
   H --> I[Final response]
+```
 
 
 ## Setup 
